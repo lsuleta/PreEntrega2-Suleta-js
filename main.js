@@ -48,19 +48,21 @@ while (horas < 1 || horas > 3) {
     prompt("Ingrese una cantidad de horas válidas")
 }
 
-if (horas === 1) {
+if (horas == 1) {
     alert(`Usted deberá abonar $${hsReserva[0].precio}`)
     horas = hsReserva[0].precio
-} else if (horas === 2) {
+} else if (horas == 2) {
     alert(`Usted deberá abonar $${hsReserva[1].precio}`)
     horas = hsReserva[1].precio
-} else if (horas === 3) {
+} else if (horas == 3) {
     alert(`Usted deberá abonar $${hsReserva[2].precio}`)
     horas = hsReserva[2].precio
 }
 
 let personas = parseInt(prompt("¿Para cuantos es la reserva?"))
 console.log(personas);
+
+let totalBebidas = 0;
 
 alert("¿que bebida desea/an consumir?")
 
@@ -85,21 +87,24 @@ for (let index = 0; index < personas; index++) {
         prompt("¿Desea?")
     }
 
-    if (infusion === 1) {
+    if (infusion == 1) {
         alert(`Usted deberá abonar $${bebidas[0].precio}`)
         infusion = bebidas[0].precio
-    } else if (infusion === 2) {
+    } else if (infusion == 2) {
         alert(`Usted deberá abonar $${bebidas[1].precio}`)
         infusion = bebidas[1].precio
-    } else if (infusion === 3) {
+    } else if (infusion == 3) {
         alert(`Usted deberá abonar $${bebidas[2].precio}`)
         infusion = bebidas[2].precio
     }
-    let totalBebidas = 0
-    totalBebidas = totalBebidas + infusion
-    console.log(totalBebidas);
+    // let totalBebidas = 0;
+    totalBebidas = totalBebidas + infusion;
+    // console.log(totalBebidas);
 
 }
+console.log(totalBebidas);
+
+let totalComidas = 0;
 
 alert("¿que comida desea/an consumir?")
 
@@ -125,42 +130,47 @@ for (let index = 0; index < personas; index++) {
         prompt("¿Desea?")
     }
 
-    if (comida === 1) {
+    if (comida == 1) {
         alert(`Usted deberá abonar $${comidas[0].precio}`)
         comida = comidas[0].precio
-    } else if (comida === 2) {
+    } else if (comida == 2) {
         alert(`Usted deberá abonar $${comidas[1].precio}`)
         comida = comidas[1].precio
-    } else if (comida === 3) {
+    } else if (comida == 3) {
         alert(`Usted deberá abonar $${comidas[2].precio}`)
         comida = comidas[2].precio
     }
-    let totalComidas = 0
-    totalComidas = totalComidas + comida
-    console.log(totalComidas);
+    
+    totalComidas = totalComidas + comida;
+    
 
 }
+
+console.log(totalComidas);
+
 function sumarMonto(horas, totalBebidas, totalComidas) {
     return horas + totalComidas + totalBebidas;
 }
 
 if (personas < 4) {
 
-    let resultado = sumarMonto(horas, totalBebidas, totalComidas)
+    let resultado = sumarMonto(horas, totalBebidas, totalComidas);
     console.log(resultado);
     alert(`El total a pagar es: $${resultado}`)
 
 } else if (personas >= 4) {
 
-    let totalBebidas = bebidas.map((item) => item.precio);
-    console.log(totalBebidas);
+    // let bebidaDescuento = bebidas.map((item) => { return {precio: item.precio - item.precio * 0.15}});
+    // console.log(bebidaDescuento);
+    // totalBebidas = bebidaDescuento
 
-    let totalComidas = bebidas.map((item) => item.precio);
-    console.log(totalComidas);
+    // let comidaDescuento = comidas.map((item) => { return {precio: item.precio - item.precio * 0.15}});
+    // console.log(comidaDescuento);
+    // totalComidas = comidaDescuento
 
-    let resultado = sumarMonto(horas, totalBebidas, totalComidas)
+    let resultado = sumarMonto(horas, totalBebidas, totalComidas);
     console.log(resultado);
-    alert(`El total a pagar es: $${resultado}`)
+    alert(`El total a pagar es: $${resultado - resultado * 0.15}`);
 }
 
 
